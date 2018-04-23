@@ -1,0 +1,8 @@
+@model DXWebApplication23.Models.SpreadsheetData
+
+@Html.DevExpress().Spreadsheet(settings => {
+    settings.Name = "Spreadsheet";
+    settings.CallbackRouteValues = new { Controller = "Home", Action = "SpreadsheetPartial" };
+    settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+    settings.RibbonMode = SpreadsheetRibbonMode.Ribbon;
+}).Open(Model.DocumentId, Model.DocumentFormat, () => { return Model.Document; }).GetHtml()
