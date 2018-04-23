@@ -1,0 +1,14 @@
+@Html.DevExpress().Spreadsheet(settings => {
+    settings.Name = "Spreadsheet";
+    settings.CallbackRouteValues = new { Controller = "Home", Action = "SpreadsheetPartial" };
+    settings.DownloadRouteValues = new { Controller = "Home", Action = "SpreadsheetPartialDownload" };
+    settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+    settings.Height = 500;
+    settings.RibbonMode = SpreadsheetRibbonMode.Ribbon;
+
+    if (Model != null)
+        settings.PreRender = (s, e) => {
+            MVCxSpreadsheet spreadsheet = (MVCxSpreadsheet)s;
+            spreadsheet.Document.LoadDocument((byte[])Model, DevExpress.Spreadsheet.DocumentFormat.Xlsx);
+        };
+}).GetHtml()

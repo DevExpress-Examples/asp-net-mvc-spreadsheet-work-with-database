@@ -1,0 +1,1 @@
+<%@ Application Codebehind="Global.asax.vb" Inherits="DXWebApplication23.MvcApplication" Language="vb" %>
