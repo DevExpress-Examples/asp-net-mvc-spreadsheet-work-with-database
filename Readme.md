@@ -1,3 +1,11 @@
+<!-- default file list -->
+*Files to look at*:
+
+* **[HomeController.cs](./CS/DXWebApplication23/Controllers/HomeController.cs) (VB: [HomeController.vb](./VB/DXWebApplication23/Controllers/HomeController.vb))**
+* [DataHelper.cs](./CS/DXWebApplication23/Models/DataHelper.cs) (VB: [DataHelper.vb](./VB/DXWebApplication23/Models/DataHelper.vb))
+* [_SpreadsheetPartial.cshtml](./CS/DXWebApplication23/Views/Home/_SpreadsheetPartial.cshtml)
+* [Index.cshtml](./CS/DXWebApplication23/Views/Home/Index.cshtml)
+<!-- default file list end -->
 # Spreadsheet - How to save and load documents from a database
 
 
