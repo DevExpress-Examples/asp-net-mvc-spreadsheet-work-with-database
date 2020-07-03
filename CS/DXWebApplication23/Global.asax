@@ -1,1 +1,1 @@
-<%@ Application Codebehind="Global.asax.cs" Inherits="DXWebApplication23.MvcApplication" Language="C#" %>
+﻿<%@ Application Codebehind="Global.asax.cs" Inherits="DXWebApplication23.Global" Language="C#" %>

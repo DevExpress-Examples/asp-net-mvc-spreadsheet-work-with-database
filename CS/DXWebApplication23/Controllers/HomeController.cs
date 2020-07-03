@@ -17,13 +17,23 @@ namespace DXWebApplication23.Controllers {
         }
 
         public ActionResult SpreadsheetPartial() {
-            return SpreadsheetExtension.GetCallbackResult("SpreadsheetName", p => {
-                p.Saving(e => {
-                    byte[] docBytes = SpreadsheetExtension.SaveCopy("SpreadsheetName", DocumentFormat.Xlsx);
-                    DataHelper.SaveDocument(docBytes);
-                    e.Handled = true;
-                });
-            });
+            return SpreadsheetExtension.GetCallbackResult(SpreadsheetSettingsHelper.GetSpreadsheetSettings());
+        }
+    }
+    public static class SpreadsheetSettingsHelper {
+        public static SpreadsheetSettings GetSpreadsheetSettings() {
+            SpreadsheetSettings settings = new SpreadsheetSettings();
+            settings.Name = "SpreadsheetName";
+            settings.CallbackRouteValues = new { Controller = "Home", Action = "SpreadsheetPartial" };
+            settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+            settings.Height = 500;
+            settings.Saving = (s, e) =>
+            {
+                byte[] docBytes = SpreadsheetExtension.SaveCopy("SpreadsheetName", DocumentFormat.Xlsx);
+                DataHelper.SaveDocument(docBytes);
+                e.Handled = true;
+            };
+            return settings;
         }
     }
 }
