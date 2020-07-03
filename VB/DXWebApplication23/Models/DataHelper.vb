@@ -5,14 +5,14 @@ Imports DevExpress.Spreadsheet
 Namespace DXWebApplication23.Models
 	Public Class DataHelper
 		Public Shared Function GetDocument() As Byte()
-			Dim context As New DataClassesDataContext()
+			Dim context As New DocumentsEntities()
 			Return context.Docs.FirstOrDefault().DocBytes.ToArray()
 		End Function
 
 		Public Shared Sub SaveDocument(ByVal bytes() As Byte)
-			Dim context As New DataClassesDataContext()
+			Dim context As New DocumentsEntities()
 			context.Docs.FirstOrDefault().DocBytes = bytes
-			context.SubmitChanges()
+			context.SaveChanges()
 		End Sub
 	End Class
 

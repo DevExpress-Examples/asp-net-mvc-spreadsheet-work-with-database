@@ -1,11 +1,7 @@
-@ModelType DXWebApplication23.Models.SpreadsheetData
+﻿@ModelType DXWebApplication23.Models.SpreadsheetData
+@Imports DXWebApplication23.Controllers
 
-@Html.DevExpress().Spreadsheet( _
-    Sub(settings)
-            settings.Name = "SpreadsheetName"
-            settings.CallbackRouteValues = New With {.Controller = "Home", .Action = "SpreadsheetPartial"}
-            settings.Width = System.Web.UI.WebControls.Unit.Percentage(100)
-    End Sub).Open(Model.DocumentId, Model.DocumentFormat, _
-                  Function()
-                          Return Model.Document
-                  End Function).GetHtml()
+@Html.DevExpress().Spreadsheet(SpreadsheetSettingsHelper.GetSpreadsheetSettings()).Open(Model.DocumentId, Model.DocumentFormat,
+                              Function()
+                                  Return Model.Document
+                              End Function).GetHtml()
