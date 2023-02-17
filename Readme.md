@@ -97,6 +97,7 @@ Follow the steps below to configure the Spreadsheet extension to work with a dat
 ## Documentation
 
 * [Creating a Connection String and Working with SQL Server LocalDB](https://learn.microsoft.com/en-us/aspnet/mvc/overview/getting-started/introduction/creating-a-connection-string)
+* [Office Document Management](https://docs.devexpress.com/AspNetMvc/402337/common-features/office-document-management)
 
 ## More Examples
 
