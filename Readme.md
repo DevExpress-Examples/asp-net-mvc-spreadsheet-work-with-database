@@ -32,7 +32,7 @@ Follow the steps below to configure the Spreadsheet extension to work with a dat
         }
     ```
 
-2. To declare the Spreadsheet in a Partial View, pass the settings that the helper class configures to the [Spreadsheet](https://docs.devexpress.com/AspNetMvc/DevExpress.Web.Mvc.UI.ExtensionsFactory.Spreadsheet(DevExpress.Web.Mvc.SpreadsheetSettings)) helper method. Call the Spreadsheet's [Open](https://docs.devexpress.com/AspNetMvc/DevExpress.Web.Mvc.RichEditExtension.Open(System.String-DevExpress.XtraRichEdit.DocumentFormat-System.Func-System.Byte---)?p=netframework) method overload to open a document from a byte array.
+2. To declare the Spreadsheet in a Partial View, pass the settings that the helper class configures to the [Spreadsheet](https://docs.devexpress.com/AspNetMvc/DevExpress.Web.Mvc.UI.ExtensionsFactory.Spreadsheet(DevExpress.Web.Mvc.SpreadsheetSettings)) helper method. Call the Spreadsheet's [Open](https://docs.devexpress.com/AspNetMvc/DevExpress.Web.Mvc.RichEditExtension.Open(System.String-DevExpress.XtraRichEdit.DocumentFormat-System.Func-System.Byte---)?p=netframework) method overload to open a document from a byte array:
 
     ```razor
     @Html.DevExpress().Spreadsheet(SpreadsheetSettingsHelper.GetSpreadsheetSettings()).Open(
@@ -60,6 +60,7 @@ Follow the steps below to configure the Spreadsheet extension to work with a dat
 ## Documentation
 
 * [Creating a Connection String and Working with SQL Server LocalDB](https://learn.microsoft.com/en-us/aspnet/mvc/overview/getting-started/introduction/creating-a-connection-string)
+* [Office Document Management](https://docs.devexpress.com/AspNetMvc/402337/common-features/office-document-management)
 
 ## More Examples
 
