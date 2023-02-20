@@ -50,7 +50,7 @@ Follow the steps below to configure the Spreadsheet extension to work with a dat
     </connectionStrings>
     ```
 
-4. Create a helper class that works with the database:
+4. Create a helper class that works with the database. The class should be able to get a document from a database as an array of bytes and save the document as a byte array back to the database:
 
     ```cs
     public class DataHelper {
@@ -85,10 +85,12 @@ Follow the steps below to configure the Spreadsheet extension to work with a dat
         }
     }
     ```
-
-6. In a partial view, declare the Spreadsheet extension with the settings that the helper class configures. Call the Spreadsheet's [Open](https://docs.devexpress.com/AspNetMvc/DevExpress.Web.Mvc.RichEditExtension.Open(System.String-DevExpress.XtraRichEdit.DocumentFormat-System.Func-System.Byte---)?p=netframework) method to open the document that the model contains:
+    
+6. In a partial view, declare the Spreadsheet extension with the settings that the helper class configures. Call the Spreadsheet's [Open](https://docs.devexpress.com/AspNetMvc/DevExpress.Web.Mvc.RichEditExtension.Open(System.String-DevExpress.XtraRichEdit.DocumentFormat-System.Func-System.Byte---)?p=netframework) method to open the document stored in the model:
 
     ```razor
+    @model DXWebApplication23.Models.SpreadsheetData
+
     @Html.DevExpress().Spreadsheet(SpreadsheetSettingsHelper.GetSpreadsheetSettings()).Open(
         Model.DocumentId, 
         Model.DocumentFormat, 
@@ -96,11 +98,23 @@ Follow the steps below to configure the Spreadsheet extension to work with a dat
     ).GetHtml()
     ```
 
-7. In the action method assigned to the `CallbackRouteValues` property, use the helper class to get the Spreadsheet extension setting. Pass the settings to the [GetCallbackResult](https://docs.devexpress.com/AspNetMvc/DevExpress.Web.Mvc.SpreadsheetExtension.GetCallbackResult(DevExpress.Web.Mvc.SpreadsheetSettings)?p=netframework) method overload to return the result of callback processing back to the client: 
+7. Configure the cotroller. In the `Index` action method, get a document from the database and save it to a model. In the method assigned to the Spreadsheet's `CallbackRouteValues` property, use the helper class to configure Spreadsheet settings and return the settings back to the client: 
 
     ```cs
-    public ActionResult SpreadsheetPartial() { // Spreadsheet's CallbackRouteAction method
-        return SpreadsheetExtension.GetCallbackResult(SpreadsheetSettingsHelper.GetSpreadsheetSettings());
+    public class HomeController : Controller {
+        [HttpGet]
+        public ActionResult Index() {
+            var model = new SpreadsheetData() {
+                DocumentId = Guid.NewGuid().ToString(),
+                DocumentFormat = DocumentFormat.Xlsx,
+                Document = DataHelper.GetDocument()
+            };
+            return View(model);
+        }
+
+        public ActionResult SpreadsheetPartial() { // Spreadsheet's CallbackRouteAction method
+            return SpreadsheetExtension.GetCallbackResult(SpreadsheetSettingsHelper.GetSpreadsheetSettings());
+        }
     }
     ```
 
