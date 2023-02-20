@@ -3,7 +3,7 @@
 [![](https://img.shields.io/badge/Open_in_DevExpress_Support_Center-FF7200?style=flat-square&logo=DevExpress&logoColor=white)](https://supportcenter.devexpress.com/ticket/details/T190813)
 [![](https://img.shields.io/badge/📖_How_to_use_DevExpress_Examples-e9f6fc?style=flat-square)](https://docs.devexpress.com/GeneralInformation/403183)
 <!-- default badges end -->
-# Spreadsheet for ASP.NET MVC - How to save and load documents from a database
+# Spreadsheet for ASP.NET MVC - How to save/load documents to/from a database
 
 This example demonstrates how to configure the [Spreadsheet extension](https://docs.devexpress.com/AspNetMvc/17113/components/spreadsheet) to save/load documents to/from a database.
 
@@ -133,4 +133,4 @@ Follow the steps below to configure the Spreadsheet extension to work with a dat
 
 ## More Examples
 
-* [Spreadsheet for ASP.NET Web Forms - How to save and load documents from a database](https://github.com/DevExpress-Examples/aspxspreadsheet-how-to-save-and-load-documents-from-a-database-t190812)
+* [Spreadsheet for ASP.NET Web Forms - How to save/load documents to/from a database](https://github.com/DevExpress-Examples/aspxspreadsheet-how-to-save-and-load-documents-from-a-database-t190812)
