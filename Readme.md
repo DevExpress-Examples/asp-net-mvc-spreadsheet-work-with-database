@@ -86,7 +86,7 @@ Follow the steps below to configure the Spreadsheet extension to work with a dat
     }
     ```
     
-6. In a partial view, pass the settings that the `SpreadsheetSettingsHelper` class configures to the [Spreadsheet](https://docs.devexpress.com/AspNetMvc/DevExpress.Web.Mvc.UI.ExtensionsFactory.Spreadsheet(DevExpress.Web.Mvc.SpreadsheetSettings)?p=netframework) extension method to create the Spreadsheet. Call the Spreadsheet's [Open](https://docs.devexpress.com/AspNetMvc/DevExpress.Web.Mvc.RichEditExtension.Open(System.String-DevExpress.XtraRichEdit.DocumentFormat-System.Func-System.Byte---)?p=netframework) method to open the document stored in the model:
+6. In a partial view, pass the settings that the `SpreadsheetSettingsHelper` class configures to the [Spreadsheet](https://docs.devexpress.com/AspNetMvc/DevExpress.Web.Mvc.UI.ExtensionsFactory.Spreadsheet(DevExpress.Web.Mvc.SpreadsheetSettings)?p=netframework) extension method to create the Spreadsheet. Call the Spreadsheet's [Open](https://docs.devexpress.com/AspNetMvc/DevExpress.Web.Mvc.SpreadsheetExtension.Open(System.String-DevExpress.Spreadsheet.DocumentFormat-System.Func-System.Byte---)?p=netframework) method to open the document stored in the model:
 
     ```razor
     @model DXWebApplication23.Models.SpreadsheetData
