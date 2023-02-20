@@ -13,7 +13,7 @@ This example demonstrates how to configure the [Spreadsheet extension](https://d
 
 Follow the steps below to configure the Spreadsheet extension to work with a database:
 
-1. Create a class that models a spreadsheet document. This class should be able to store a document's identifier, format, and contents:
+1. Create a class that models a spreadsheet document. This class should be able to store a document's identifier, format, and content:
 
     ```cs
     public class SpreadsheetData {
@@ -50,7 +50,7 @@ Follow the steps below to configure the Spreadsheet extension to work with a dat
     </connectionStrings>
     ```
 
-4. Create a helper class that works with the database. The class should be able to get a document from a database as an array of bytes and save the document as a byte array back to the database:
+4. Create a helper class that works with the database. The class should be able to get a document from a database as an array of bytes and save a byte array back to the database:
 
     ```cs
     public class DataHelper {
@@ -86,7 +86,7 @@ Follow the steps below to configure the Spreadsheet extension to work with a dat
     }
     ```
     
-6. In a partial view, declare the Spreadsheet extension with the settings that the helper class configures. Call the Spreadsheet's [Open](https://docs.devexpress.com/AspNetMvc/DevExpress.Web.Mvc.RichEditExtension.Open(System.String-DevExpress.XtraRichEdit.DocumentFormat-System.Func-System.Byte---)?p=netframework) method to open the document stored in the model:
+6. In a partial view, pass the settings that the helper class configures to the [Spreadsheet](https://docs.devexpress.com/AspNetMvc/DevExpress.Web.Mvc.UI.ExtensionsFactory.Spreadsheet(DevExpress.Web.Mvc.SpreadsheetSettings)?p=netframework) extension method to create the Spreadsheet. Call the Spreadsheet's [Open](https://docs.devexpress.com/AspNetMvc/DevExpress.Web.Mvc.RichEditExtension.Open(System.String-DevExpress.XtraRichEdit.DocumentFormat-System.Func-System.Byte---)?p=netframework) method to open the document stored in the model:
 
     ```razor
     @model DXWebApplication23.Models.SpreadsheetData
@@ -112,7 +112,8 @@ Follow the steps below to configure the Spreadsheet extension to work with a dat
             return View(model);
         }
 
-        public ActionResult SpreadsheetPartial() { // Spreadsheet's CallbackRouteAction method
+        // The method assigned to the Spreadsheet's CallbackRouteAction property in the helper class
+        public ActionResult SpreadsheetPartial() { 
             return SpreadsheetExtension.GetCallbackResult(SpreadsheetSettingsHelper.GetSpreadsheetSettings());
         }
     }
@@ -120,7 +121,7 @@ Follow the steps below to configure the Spreadsheet extension to work with a dat
 
 ## Files to Review
 
-* **[SpreadsheetPartial.cshtml](./CS/DXWebApplication23/Views/Home/SpreadsheetPartial.cshtml)**
+* [SpreadsheetPartial.cshtml](./CS/DXWebApplication23/Views/Home/SpreadsheetPartial.cshtml)
 * [HomeController.cs](./CS/DXWebApplication23/Controllers/HomeController.cs) (VB: [HomeController.vb](./VB/DXWebApplication23/Controllers/HomeController.vb))
 * [DataHelper.cs](./CS/DXWebApplication23/Models/DataHelper.cs) (VB: [DataHelper.vb](./VB/DXWebApplication23/Models/DataHelper.vb))
 * [Index.cshtml](./CS/DXWebApplication23/Views/Home/Index.cshtml)
