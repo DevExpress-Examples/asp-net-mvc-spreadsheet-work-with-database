@@ -67,7 +67,7 @@ Follow the steps below to configure the Spreadsheet extension to work with a dat
     }
     ```
 
-5. Create a helper class that configures and returns the [SpreadsheetSettings](https://docs.devexpress.com/AspNetMvc/DevExpress.Web.Mvc.SpreadsheetSettings?p=netframework) object. In the class method, specify the object's [Name](https://docs.devexpress.com/AspNetMvc/DevExpress.Web.Mvc.SettingsBase.Name) and [CallbackRouteValues](https://docs.devexpress.com/AspNetMvc/DevExpress.Web.Mvc.SpreadsheetSettings.CallbackRouteValues) properties. Set the [Saving](https://docs.devexpress.com/AspNetMvc/DevExpress.Web.Mvc.SpreadsheetSettings.Saving?p=netframework) property to a function that converts an open document to a byte array and saves the array to the database:
+5. Create the `SpreadsheetSettingsHelper` helper class that configures and returns the [SpreadsheetSettings](https://docs.devexpress.com/AspNetMvc/DevExpress.Web.Mvc.SpreadsheetSettings?p=netframework) object. In the class method, specify the object's [Name](https://docs.devexpress.com/AspNetMvc/DevExpress.Web.Mvc.SettingsBase.Name) and [CallbackRouteValues](https://docs.devexpress.com/AspNetMvc/DevExpress.Web.Mvc.SpreadsheetSettings.CallbackRouteValues) properties. Set the [Saving](https://docs.devexpress.com/AspNetMvc/DevExpress.Web.Mvc.SpreadsheetSettings.Saving?p=netframework) property to a function that converts an open document to a byte array and saves it to the database:
 
     ```cs
     public static class SpreadsheetSettingsHelper {
@@ -86,7 +86,7 @@ Follow the steps below to configure the Spreadsheet extension to work with a dat
     }
     ```
     
-6. In a partial view, pass the settings that the helper class configures to the [Spreadsheet](https://docs.devexpress.com/AspNetMvc/DevExpress.Web.Mvc.UI.ExtensionsFactory.Spreadsheet(DevExpress.Web.Mvc.SpreadsheetSettings)?p=netframework) extension method to create the Spreadsheet. Call the Spreadsheet's [Open](https://docs.devexpress.com/AspNetMvc/DevExpress.Web.Mvc.RichEditExtension.Open(System.String-DevExpress.XtraRichEdit.DocumentFormat-System.Func-System.Byte---)?p=netframework) method to open the document stored in the model:
+6. In a partial view, pass the settings that the `SpreadsheetSettingsHelper` class configures to the [Spreadsheet](https://docs.devexpress.com/AspNetMvc/DevExpress.Web.Mvc.UI.ExtensionsFactory.Spreadsheet(DevExpress.Web.Mvc.SpreadsheetSettings)?p=netframework) extension method to create the Spreadsheet. Call the Spreadsheet's [Open](https://docs.devexpress.com/AspNetMvc/DevExpress.Web.Mvc.RichEditExtension.Open(System.String-DevExpress.XtraRichEdit.DocumentFormat-System.Func-System.Byte---)?p=netframework) method to open the document stored in the model:
 
     ```razor
     @model DXWebApplication23.Models.SpreadsheetData
@@ -98,7 +98,7 @@ Follow the steps below to configure the Spreadsheet extension to work with a dat
     ).GetHtml()
     ```
 
-7. Configure the cotroller. In the `Index` action method, get a document from the database and save it to a model. In the method assigned to the Spreadsheet's `CallbackRouteValues` property, use the helper class to configure Spreadsheet settings and return the settings back to the client: 
+7. Configure the controller. In the `Index` action method, get a document from the database and save it to a model. In the action method you assigned to the `CallbackRouteValues` setting, use the `SpreadsheetSettingsHelper` class to configure Spreadsheet settings, then return them back to the client: 
 
     ```cs
     public class HomeController : Controller {
