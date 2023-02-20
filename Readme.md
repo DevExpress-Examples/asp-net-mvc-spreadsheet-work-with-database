@@ -5,7 +5,7 @@
 <!-- default badges end -->
 # Spreadsheet for ASP.NET MVC - How to save and load documents from a database
 
-This example demonstrates how to configure the [Spreadsheet extension](https://docs.devexpress.com/AspNetMvc/17113/components/spreadsheet) to save and load documents from a database.
+This example demonstrates how to configure the [Spreadsheet extension](https://docs.devexpress.com/AspNetMvc/17113/components/spreadsheet) to save/load documents to/from a database.
 
 ![Connect Spreadsheet to Database](connect-spreadsheet-to-database.png)
 
@@ -50,7 +50,7 @@ Follow the steps below to configure the Spreadsheet extension to work with a dat
     </connectionStrings>
     ```
 
-4. Create a helper class that works with the database. The class should be able to get a document from a database as an array of bytes and save a byte array back to the database:
+4. Create a helper class that works with the database. The class should be able to load a document from a database as an array of bytes and save the byte array back to the database:
 
     ```cs
     public class DataHelper {
@@ -67,7 +67,7 @@ Follow the steps below to configure the Spreadsheet extension to work with a dat
     }
     ```
 
-5. Create the `SpreadsheetSettingsHelper` helper class that configures and returns the [SpreadsheetSettings](https://docs.devexpress.com/AspNetMvc/DevExpress.Web.Mvc.SpreadsheetSettings?p=netframework) object. Specify the object's [Name](https://docs.devexpress.com/AspNetMvc/DevExpress.Web.Mvc.SettingsBase.Name) and [CallbackRouteValues](https://docs.devexpress.com/AspNetMvc/DevExpress.Web.Mvc.SpreadsheetSettings.CallbackRouteValues) properties. Set the [Saving](https://docs.devexpress.com/AspNetMvc/DevExpress.Web.Mvc.SpreadsheetSettings.Saving?p=netframework) property to a function that converts an open document to a byte array and saves it to the database:
+5. Create the `SpreadsheetSettingsHelper` helper class that configures and returns the [SpreadsheetSettings](https://docs.devexpress.com/AspNetMvc/DevExpress.Web.Mvc.SpreadsheetSettings?p=netframework) object. Specify the object's [Name](https://docs.devexpress.com/AspNetMvc/DevExpress.Web.Mvc.SettingsBase.Name) and [CallbackRouteValues](https://docs.devexpress.com/AspNetMvc/DevExpress.Web.Mvc.SpreadsheetSettings.CallbackRouteValues) properties. Set the [Saving](https://docs.devexpress.com/AspNetMvc/DevExpress.Web.Mvc.SpreadsheetSettings.Saving?p=netframework) property to a function that converts an opened document to a byte array and saves it to the database:
 
     ```cs
     public static class SpreadsheetSettingsHelper {
@@ -98,7 +98,7 @@ Follow the steps below to configure the Spreadsheet extension to work with a dat
     ).GetHtml()
     ```
 
-7. Configure the controller. In the `Index` action method, get a document from the database and save it to a model. In the action method you assigned to the `CallbackRouteValues` setting, use the `SpreadsheetSettingsHelper` class to configure Spreadsheet settings, then return them back to the client: 
+7. Configure the controller. In the `Index` action method, load a document from the database and save it to a model. In the action method you assigned to the `CallbackRouteValues` setting, use the `SpreadsheetSettingsHelper` class to configure Spreadsheet settings, then return them back to the client: 
 
     ```cs
     public class HomeController : Controller {
