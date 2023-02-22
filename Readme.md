@@ -13,7 +13,7 @@ This example demonstrates how to configure the [Spreadsheet extension](https://d
 
 Follow the steps below to configure the Spreadsheet extension to work with a database:
 
-1. Create a class that models a spreadsheet document. This class should be able to store a document's identifier, format, and content:
+1. Create a class that models a spreadsheet document. This class should be able to store document identifiers, file formats, and content:
 
     ```cs
     public class SpreadsheetData {
